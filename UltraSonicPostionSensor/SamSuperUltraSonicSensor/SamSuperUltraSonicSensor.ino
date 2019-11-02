@@ -40,8 +40,8 @@ void loop() {
   //  print the cm distance in cm 
   //  Serial.print("cm: ");
   //  Serial.println(cm);
-  
-  if (cm == 15){
+  int distance_off = abs(15 - cm); 
+  if (distance_off <= 2){
     digitalWrite(LED_PIN, HIGH);
   }else{
     digitalWrite(LED_PIN, LOW);
