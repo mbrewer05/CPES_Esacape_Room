@@ -1,8 +1,8 @@
 //pin numbers
 const int TRIGx = 5;
 const int ECHOx = 6;
-const int TRIGy = 8;
-const int ECHOy = 9;
+const int TRIGy = 9;
+const int ECHOy = 10;
 const int led1 = 7;
 
 const int distanceToX = 16;
@@ -36,16 +36,22 @@ void loop(){
   
   // Sets the trigPin on HIGH state for 10 micro seconds
   digitalWrite(TRIGx, HIGH);
-  digitalWrite(TRIGy, HIGH);
   delayMicroseconds(10);
   digitalWrite(TRIGx, LOW);
-  digitalWrite(TRIGy, LOW);
   
   // Reads the echoPin, returns the sound wave travel time in microseconds
   durationx = pulseIn(ECHOx, HIGH);
-  durationy = pulseIn(ECHOy, HIGH);  
   // Calculating the distance
   distancex= durationx*0.034/2;
+
+  // Sets the trigPin on HIGH state for 10 micro seconds
+  digitalWrite(TRIGy, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIGy, LOW);
+  
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  durationy = pulseIn(ECHOy, HIGH);  
+  // Calculating the distance
   distancey= durationy*0.034/2;
   
   // Prints the distance on the Serial Monitor
@@ -67,4 +73,5 @@ void loop(){
     cycleCount = 0;
     digitalWrite(led1, LOW);
   }
+  delay(10);
 }

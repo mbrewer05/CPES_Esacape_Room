@@ -5,6 +5,7 @@
 
 int TRIG_PIN = 5; 
 int ECHO_PIN = 6; 
+int LED_PIN = 7; 
 long duration, cm;
 
 void setup() {
@@ -12,6 +13,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(TRIG_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
+  pinMode(LED_PIN, OUTPUT);
 }
 
 void loop() {
@@ -29,9 +31,21 @@ void loop() {
 
   //take the time that it was pulsed and convert it into a distance in cm
   cm = (duration/2) / 29.1;
+<<<<<<< HEAD
 
   Serial.print("cm: ");
   Serial.println(cm);
 
+=======
+  //  print the cm distance in cm 
+  //  Serial.print("cm: ");
+  //  Serial.println(cm);
+  
+  if (cm == 15){
+    digitalWrite(LED_PIN, HIGH);
+  }else{
+    digitalWrite(LED_PIN, LOW);
+  }
+>>>>>>> 2a20938142122adc7227d312d08fb539d64748fe
   delay(250);
 }

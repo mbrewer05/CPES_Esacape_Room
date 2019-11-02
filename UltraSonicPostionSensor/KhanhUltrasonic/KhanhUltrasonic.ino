@@ -31,7 +31,7 @@ void loop() {
   cm = (duration/2) / 29.1;
   inches = (duration/2) / 74;
 
-  if(5<inches && inches<8){
+  if(!ledOn && 5<inches && inches<8){
     digitalWrite(ledPin,HIGH);
     ledOn = true;
   } else if(ledOn){
