@@ -1,5 +1,6 @@
 int trigPin = 5;
 int echoPin = 6;
+int ledPin = 7;
 long duration, cm, inches;
 
 void setup() {
@@ -7,6 +8,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+  pinMode(ledPin, OUTPUT);
 }
 
 void loop() {
@@ -27,11 +29,15 @@ void loop() {
   cm = (duration/2) / 29.1;
   inches = (duration/2) / 74;
 
-  Serial.println("Distance: ");
-  Serial.print(cm);
-  Serial.print("cm ");
-  Serial.print(inches);
-  Serial.print("in");
+  boolean ledOn = false;
+
+  if(5<inches && inches<8){
+    digitalWrite(ledPin,HIGH);
+    ledOn = true;
+  } else if(ledOn){
+    digitalWrite(ledPin,LOW);
+    ledOn = false;
+  }
   
   delay(100);
   
