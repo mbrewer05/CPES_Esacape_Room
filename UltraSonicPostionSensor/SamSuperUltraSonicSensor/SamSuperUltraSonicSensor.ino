@@ -17,7 +17,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   //pulse for 10 microseconds 
-  digitalWrite(TRIG_PIN, LOW)
+  digitalWrite(TRIG_PIN, LOW);
   delayMicroseconds(5);
   digitalWrite(TRIG_PIN, HIGH);
   delayMicroseconds(10);
@@ -25,12 +25,13 @@ void loop() {
 
   //read the input 
   pinMode(ECHO_PIN, INPUT);
-  duration = pulseIn(echoPin, HIGH); 
+  duration = pulseIn(ECHO_PIN, HIGH); 
 
   //take the time that it was pulsed and convert it into a distance in cm
   cm = (duration/2) / 29.1;
 
-  Serial.printf("%d cm\n", cm);
+  Serial.print("cm: ");
+  Serial.println(cm);
 
   delay(250);
 }
