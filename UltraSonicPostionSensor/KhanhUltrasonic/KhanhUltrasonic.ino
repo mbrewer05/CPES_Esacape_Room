@@ -2,6 +2,8 @@ int trigPin = 5;
 int echoPin = 6;
 int ledPin = 7;
 long duration, cm, inches;
+boolean ledOn = false;
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -28,8 +30,6 @@ void loop() {
 
   cm = (duration/2) / 29.1;
   inches = (duration/2) / 74;
-
-  boolean ledOn = false;
 
   if(5<inches && inches<8){
     digitalWrite(ledPin,HIGH);
